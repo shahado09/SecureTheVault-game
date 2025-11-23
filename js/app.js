@@ -1,4 +1,4 @@
- // 1) Define the required variables used to track the state of the game.
+//  Questions array
 const questions = [
     {
     tip: "Hackers do more than guessing passwords—they use cracking tools like brute force, substitution, and Caesar Cipher. Weak passwords are the easiest way in. If your password is predictable, the attacker can break it in seconds. A strong password is your first and strongest line of defense.",
@@ -153,11 +153,28 @@ const questions = [
 
 console.log()
 
-// 2) Store cached element references.
-const buttonNumberElement =document.querySelectorAll('.cell')
+// 2) cached element
+const cells =document.querySelectorAll('.cell')
+const begin =document.querySelectorAll('#begin')
+const hackerPosEl =document.querySelectorAll('#hackerPos')
+const defenderPosEl =document.querySelectorAll('#defenderPos')
+const currentStageEl =document.querySelectorAll('#currentStage')
+const resetBtn =document.querySelectorAll('#resetBtn')
+const popupBg =document.querySelectorAll('#popupBg')
+const tipPopup =document.querySelectorAll('#tipPopup')
+const tipText =document.querySelectorAll('#tipText')
+const scenarioPopup =document.querySelectorAll('#scenarioPopup')
+const scenarioText =document.querySelectorAll('#scenarioText')
+const questionPopup =document.querySelectorAll('#questionPopup')
+const questionText =document.querySelectorAll('#questionText')
+const ansArea =document.querySelectorAll('#ansArea')
+const feedbackPopup =document.querySelectorAll('#feedbackPopup')
+const feedbackText =document.querySelectorAll('#feedbackText')
+const nextBtn =document.querySelectorAll('#nextBtn')
+const closeBtn =document.querySelectorAll('#closeBtn')
 
-// 3) Upon loading, the game state should be initialized, and a function should 
-//    be called to render this game state.
+
+// 3) init
 
 // 4) The state of the game should be rendered to the user.
 
