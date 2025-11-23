@@ -154,7 +154,7 @@ const questions = [
 console.log()
 
 // 2) Store cached element references.
-const buttonNumberElement =document.querySelectorAll('.buttonNumber')
+const buttonNumberElement =document.querySelectorAll('.cell')
 
 // 3) Upon loading, the game state should be initialized, and a function should 
 //    be called to render this game state.
