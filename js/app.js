@@ -153,34 +153,41 @@ const questions = [
 
 console.log()
 
-// 2) cached element
+// 2) cached element + Variables 
 const cells =document.querySelectorAll('.cell')
-const begin =document.querySelectorAll('#begin')
-const hackerPosEl =document.querySelectorAll('#hackerPos')
-const defenderPosEl =document.querySelectorAll('#defenderPos')
-const currentStageEl =document.querySelectorAll('#currentStage')
-const resetBtn =document.querySelectorAll('#resetBtn')
-const popupBg =document.querySelectorAll('#popupBg')
-const tipPopup =document.querySelectorAll('#tipPopup')
-const tipText =document.querySelectorAll('#tipText')
-const scenarioPopup =document.querySelectorAll('#scenarioPopup')
-const scenarioText =document.querySelectorAll('#scenarioText')
-const questionPopup =document.querySelectorAll('#questionPopup')
-const questionText =document.querySelectorAll('#questionText')
-const ansArea =document.querySelectorAll('#ansArea')
-const feedbackPopup =document.querySelectorAll('#feedbackPopup')
-const feedbackText =document.querySelectorAll('#feedbackText')
-const nextBtn =document.querySelectorAll('#nextBtn')
-const closeBtn =document.querySelectorAll('#closeBtn')
+const begin =document.querySelector('#begin')
+const hackerPosEl =document.querySelector('#hackerPos')
+const defenderPosEl =document.querySelector('#defenderPos')
+const currentStageEl =document.querySelector('#currentStage')
+const resetBtn =document.querySelector('#resetBtn')
+const popupBg =document.querySelector('#popupBg')
+const tipPopup =document.querySelector('#tipPopup')
+const tipText =document.querySelector('#tipText')
+const scenarioPopup =document.querySelector('#scenarioPopup')
+const scenarioText =document.querySelector('#scenarioText')
+const questionPopup =document.querySelector('#questionPopup')
+const questionText =document.querySelector('#questionText')
+const ansArea =document.querySelector('#ansArea')
+const feedbackPopup =document.querySelector('#feedbackPopup')
+const feedbackText =document.querySelector('#feedbackText')
+const nextBtn =document.querySelector('#nextBtn')
+const closeBtn =document.querySelector('#closeBtn')
 
 
-// 3) init
+let currentStage=1;
+let hackerPos=0;
+let defenderPos=0;
+let popupStep=1;
+let currentpQustion=null;
+let hasAnswered=false;
+let gameOver=false;
 
-// 4) The state of the game should be rendered to the user.
+// 3) Functions
 
-// 5) Handle the game over logic. 
+init();
 
-// 6) Handle each instance of a player clicking a button with the use of a 
-//    `handleClick()` function.
+function init(){}
 
-// 7) Create reset functionality.
+function updateInfo(){}
+
+function traclCells(){}
