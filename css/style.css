@@ -1,0 +1,15 @@
+.title{  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;}
+
+.subtitle{  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;}
+
+.steps-row{ display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16PX;
+  font-family: system-ui, sans-serif;}
