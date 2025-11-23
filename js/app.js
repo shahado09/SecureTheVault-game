@@ -151,7 +151,7 @@ const questions = [
   }
 ];
 
-console.log()
+console.log(questions)
 
 // 2) cached element + Variables 
 const cells =document.querySelectorAll('.cell')
@@ -172,22 +172,45 @@ const feedbackPopup =document.querySelector('#feedbackPopup')
 const feedbackText =document.querySelector('#feedbackText')
 const nextBtn =document.querySelector('#nextBtn')
 const closeBtn =document.querySelector('#closeBtn')
-
-
 let currentStage=1;
 let hackerPos=0;
 let defenderPos=0;
 let popupStep=1;
-let currentpQustion=null;
+let currentQustion=null;
 let hasAnswered=false;
 let gameOver=false;
 
 // 3) Functions
-
 init();
+function init(){
+   currentStage=1;
+   hackerPos=0;
+   defenderPos=0;
+   popupStep=1;
+   currentQustion=null;
+   hasAnswered=false;
+   gameOver=false;
 
-function init(){}
+  begin.textContent="Click Stage 1 to begin."
+  popupBg.classList.add('hidden')
+  updateInfo();
+  trackCells();
 
-function updateInfo(){}
+}
 
-function traclCells(){}
+function updateInfo(){
+  hackerPosEl.textContent=hackerPos;
+  defenderPosEl.textContent=defenderPos;
+  currentStageEl.textContent=currentStage;
+}
+
+function trackCells(){
+cells.forEach(cell => {
+  const stageNumber= Number(cell.dataset.stage);
+  cell.classList.remove("done","current");
+
+  if(stageNumber<currentStage && !gameOver)
+    cell.classList.add('done');
+  else if (stageNumber === currentStage)
+    cell.classList.add('current');
+});}
