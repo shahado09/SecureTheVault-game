@@ -209,8 +209,24 @@ cells.forEach(cell => {
   const stageNumber= Number(cell.dataset.stage);
   cell.classList.remove("done","current");
 
-  if(stageNumber<currentStage && !gameOver)
+  if(stageNumber<currentStage)
     cell.classList.add('done');
-  else if (stageNumber === currentStage)
+  else if (stageNumber === currentStage  && !gameOver)
     cell.classList.add('current');
 });}
+
+
+function addEventListener(){
+
+cells.forEach(cell =>{
+  
+  cell.addEventListener('click',function(){
+    const stageNumber= Number(cell.dataset.stage);
+    if(stageNumber!==currentStage )
+      { begin.textContent = "You must complete the current stage first.";
+        return;}
+
+  console.log("Open popup for stage:", stageNumber);
+  })
+})
+}
