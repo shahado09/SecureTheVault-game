@@ -29,35 +29,57 @@
             <span class="defender-label">Defender</span>
         </div>
 
-        <div class="track">
+            <div class="hacker-track">
             <div class="row"id="row1">
-                <div class="cell" data-stage="1">1</div>
-                <div class="cell" data-stage="2">2</div>
-                <div class="cell" data-stage="3">3</div>
-                <div class="cell" data-stage="4">4</div>
-                <div class="cell" data-stage="5">5</div>        
+                <div class="hacker-cell" data-hacker="1">1</div>
+                <div class="hacker-cell" data-hacker="2">2</div>
+                <div class="hacker-cell" data-hacker="3">3</div>
+                <div class="hacker-cell" data-hacker="4">4</div>
+                <div class="hacker-cell" data-hacker="5">5</div>        
             </div>
             <div class="reverse-row" id="row2">
-                <div class="cell" data-stage="6">6</div>
-                <div class="cell" data-stage="7">7</div>
-                <div class="cell" data-stage="8">8</div>
-                <div class="cell" data-stage="9">9</div>
-                <div class="cell" data-stage="10">10</div>
+                <div class="hacker-cell" data-hacker="6">6</div>
+                <div class="hacker-cell" data-hacker="7">7</div>
+                <div class="hacker-cell" data-hacker="8">8</div>
+                <div class="hacker-cell" data-hacker="9">9</div>
+                <div class="hacker-cell" data-hacker="10">10</div>
             </div>
             <div class="row" id="row3">
-                <div class="cell" data-stage="11">11</div>
-                <div class="cell" data-stage="12">12</div>
-                <div class="cell" data-stage="13">13</div>
-                <div class="cell" data-stage="14">14</div>
-                <div class="cell" data-stage="15">15</div>
+                <div class="hacker-cell" data-hacker="11">11</div>
+                <div class="hacker-cell" data-hacker="12">12</div>
+                <div class="hacker-cell" data-hacker="13">13</div>
+                <div class="hacker-cell" data-hacker="14">14</div>
+                <div class="hacker-cell" data-hacker="15">15</div>
             </div>
 
         </div>
 
-        <div class="tokens">
-            <div id="hacker" class="hacker-token">H</div>
-            <div id="defender" class="defender-token">D</div>
-            <div id="vault" class="vault">VAULT</div>
+        <div class="data-center">Data Center</div>
+
+        <div class="defender-track">
+            <div class="row" id="row3">
+                <div class="defender-cell" data-defender="11">11</div>
+                <div class="defender-cell" data-defender="12">12</div>
+                <div class="defender-cell" data-defender="13">13</div>
+                <div class="defender-cell" data-defender="14">14</div>
+                <div class="defender-cell" data-defender="15">15</div>
+            </div>
+
+            <div class="reverse-row" id="row2">
+                <div class="defender-cell" data-defender="6">6</div>
+                <div class="defender-cell" data-defender="7">7</div>
+                <div class="defender-cell" data-defender="8">8</div>
+                <div class="defender-cell" data-defender="9">9</div>
+                <div class="defender-cell" data-defender="10">10</div>
+            </div>
+            <div class="row"id="row1">
+                <div class="defender-cell" data-defender="1">1</div>
+                <div class="defender-cell" data-defender="2">2</div>
+                <div class="defender-cell" data-defender="3">3</div>
+                <div class="defender-cell" data-defender="4">4</div>
+                <div class="defender-cell" data-defender="5">5</div>        
+            </div>
+
         </div>
 
 
@@ -95,6 +117,7 @@
             <h2>Feedback</h2>
             <p id="feedbackText"></p>
         </div>
+
         <div  class="action-popup">
             <button id="nextBtn" class="btn">Next</button>
             <button id="closeBtn" class="btn">Close</button>

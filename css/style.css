@@ -14,7 +14,7 @@
   gap: 16PX;
   font-family: system-ui, sans-serif;}
 
-  .cell{
+.defender-cell{
   padding: 0;
   width: 40px;
   height: 40px;
@@ -29,3 +29,17 @@
   border: 2px solid rgba(21, 35, 221, 0.644);
 }
 
+.hacker-cell{
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #0d186e88;
+  border-radius: 4px;
+  border: 2px solid rgba(21, 35, 221, 0.644);
+}

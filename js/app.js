@@ -155,7 +155,8 @@ const questions = [
 console.log(questions)
 
 // 2) cached element + Variables 
-const cells =document.querySelectorAll('.cell')
+const hackerCells =document.querySelectorAll('.hacker-cell')
+const defenderCells =document.querySelectorAll('.defender-cell')
 const begin =document.querySelector('#begin')
 const hackerPosEl =document.querySelector('#hackerPos')
 const defenderPosEl =document.querySelector('#defenderPos')
@@ -186,6 +187,8 @@ let gameOver=false;
 
 // 3) Functions
 init();
+addCellEventListener();
+
 function init(){
    currentStage=1;
    hackerPos=0;
@@ -198,11 +201,7 @@ function init(){
   begin.textContent="Click Stage 1 to begin."
   popupBg.classList.add('hidden')
   updateInfo();
-  trackCells();
-  addCellEventListener();
-  
-
-}
+  trackCells();}
 
 function updateInfo(){
   hackerPosEl.textContent=hackerPos;
@@ -210,22 +209,28 @@ function updateInfo(){
   currentStageEl.textContent=currentStage;
 }
 
-function trackCells(){
-  cells.forEach(cell => {
-    const stageNumber= Number(cell.dataset.stage);
-    cell.classList.remove("done","current");
-
-    if(stageNumber<currentStage)
-      cell.classList.add('done');
-    else if (stageNumber === currentStage  && !gameOver)
-      cell.classList.add('current');
-  });}
+function trackCells() {
+  hackerCells.forEach(cell => {
+    const step = Number(cell.dataset.hacker);
+    cell.classList.toggle('active', step <= hackerPos);
+  });
+  defenderCells.forEach(cell => {
+    const step = Number(cell.dataset.defender);
+    cell.classList.toggle('active', step <= defenderPos);
+    cell.classList.toggle('current-stage', step === currentStage && !gameOver);
+  });
+}
 
 
 function addCellEventListener(){
-  cells.forEach(cell =>{
+  defenderCells.forEach(cell =>{
     cell.addEventListener('click',function(){
-      const stageNumber= Number(cell.dataset.stage);
+      
+      if (gameOver) {
+      begin.textContent = "Game over. Press Reset to play again.";
+      return;
+    }
+      const stageNumber= Number(cell.dataset.defender);
       if(stageNumber!==currentStage )
         { begin.textContent = "You must complete the current stage first.";
           return;}
@@ -258,7 +263,7 @@ nextBtn.addEventListener('click', function(){
     scenarioText.textContent=currentQuestion.scenario
     return;}
 
-    if(popupStep===2)
+  if(popupStep===2)
     {popupStep = 3;
     scenarioPopup.classList.add('hidden')
     questionPopup.classList.remove('hidden')
@@ -266,20 +271,18 @@ nextBtn.addEventListener('click', function(){
     showQuestion();
     return;}
 
-    if(popupStep===3 && !hasAnswered)
+  if(popupStep===3 && !hasAnswered)
       {begin.textContent="Answer the question first.";
       return;}
 
-    if(popupStep===4)
+  if(popupStep===4)
     {popupBg.classList.add('hidden');
-      goToNextStage();
-    }
-
-
+      goToNextStage(); }
 })
 
 
 function showQuestion(){
+
   ansArea.innerHTML=''
   currentQuestion.options.forEach(option =>{
     const btn=document.createElement('button')
@@ -307,6 +310,7 @@ function checkAnswer(option){
 }
 
 function goToNextStage(){
+
   if(hackerPos>=15)
     {begin.textContent="Hacker breached the vault!"
       gameOver=true;
@@ -317,6 +321,18 @@ function goToNextStage(){
       gameOver=true;
       return;
     }
+
+  if (currentStage >= 15) {
+    if (defenderPos > hackerPos) 
+      {begin.textContent = "You Win! You protected the vault just in time!";} 
+    else if (hackerPos > defenderPos) 
+      {begin.textContent = "Hacker almost breached the vault. Try again!";}
+    else 
+      {begin.textContent = "It's a tie! Replay the game to break the tie.";}
+      gameOver = true;
+      trackCells();
+      return;
+  }
 
     currentStage++;
     updateInfo();
