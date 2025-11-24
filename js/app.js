@@ -1,3 +1,4 @@
+
 //  Questions array
 const questions = [
     {
@@ -161,6 +162,7 @@ const defenderPosEl =document.querySelector('#defenderPos')
 const currentStageEl =document.querySelector('#currentStage')
 const resetBtn =document.querySelector('#resetBtn')
 const popupBg =document.querySelector('#popupBg')
+const popupBox =document.querySelector('#popupBox')
 const tipPopup =document.querySelector('#tipPopup')
 const tipText =document.querySelector('#tipText')
 const scenarioPopup =document.querySelector('#scenarioPopup')
@@ -172,11 +174,13 @@ const feedbackPopup =document.querySelector('#feedbackPopup')
 const feedbackText =document.querySelector('#feedbackText')
 const nextBtn =document.querySelector('#nextBtn')
 const closeBtn =document.querySelector('#closeBtn')
+
+
 let currentStage=1;
 let hackerPos=0;
 let defenderPos=0;
 let popupStep=1;
-let currentQustion=null;
+let currentQuestion=null;
 let hasAnswered=false;
 let gameOver=false;
 
@@ -187,7 +191,7 @@ function init(){
    hackerPos=0;
    defenderPos=0;
    popupStep=1;
-   currentQustion=null;
+   currentQuestion=null;
    hasAnswered=false;
    gameOver=false;
 
@@ -195,6 +199,8 @@ function init(){
   popupBg.classList.add('hidden')
   updateInfo();
   trackCells();
+  addCellEventListener();
+  
 
 }
 
@@ -205,28 +211,119 @@ function updateInfo(){
 }
 
 function trackCells(){
-cells.forEach(cell => {
-  const stageNumber= Number(cell.dataset.stage);
-  cell.classList.remove("done","current");
-
-  if(stageNumber<currentStage)
-    cell.classList.add('done');
-  else if (stageNumber === currentStage  && !gameOver)
-    cell.classList.add('current');
-});}
-
-
-function addEventListener(){
-
-cells.forEach(cell =>{
-  
-  cell.addEventListener('click',function(){
+  cells.forEach(cell => {
     const stageNumber= Number(cell.dataset.stage);
-    if(stageNumber!==currentStage )
-      { begin.textContent = "You must complete the current stage first.";
-        return;}
+    cell.classList.remove("done","current");
 
-  console.log("Open popup for stage:", stageNumber);
+    if(stageNumber<currentStage)
+      cell.classList.add('done');
+    else if (stageNumber === currentStage  && !gameOver)
+      cell.classList.add('current');
+  });}
+
+
+function addCellEventListener(){
+  cells.forEach(cell =>{
+    cell.addEventListener('click',function(){
+      const stageNumber= Number(cell.dataset.stage);
+      if(stageNumber!==currentStage )
+        { begin.textContent = "You must complete the current stage first.";
+          return;}
+    console.log("Open popup for stage:", stageNumber);
+    openTipPopUp(stageNumber)
+    })
   })
-})
+  }
+
+
+function openTipPopUp(stageNumber){
+  currentQuestion=questions[stageNumber-1]
+  popupStep=1;
+  hasAnswered=false;
+  tipText.textContent=currentQuestion.tip
+
+  tipPopup.classList.remove('hidden')
+  popupBg.classList.remove('hidden')
+  scenarioPopup.classList.add('hidden')
+  questionPopup.classList.add('hidden')
+  feedbackPopup.classList.add('hidden')
 }
+
+nextBtn.addEventListener('click', function(){
+
+  if(popupStep===1)
+    { popupStep = 2;
+    tipPopup.classList.add('hidden')
+    scenarioPopup.classList.remove('hidden')
+    scenarioText.textContent=currentQuestion.scenario
+    return;}
+
+    if(popupStep===2)
+    {popupStep = 3;
+    scenarioPopup.classList.add('hidden')
+    questionPopup.classList.remove('hidden')
+    questionText.textContent=currentQuestion.question
+    showQuestion();
+    return;}
+
+    if(popupStep===3 && !hasAnswered)
+      {begin.textContent="Answer the question first.";
+      return;}
+
+    if(popupStep===4)
+    {popupBg.classList.add('hidden');
+      goToNextStage();
+    }
+
+
+})
+
+
+function showQuestion(){
+  ansArea.innerHTML=''
+  currentQuestion.options.forEach(option =>{
+    const btn=document.createElement('button')
+    btn.textContent= option ;
+    btn.classList.add('answer-btn');
+    btn.addEventListener('click',function(){
+      checkAnswer(option);})
+    ansArea.appendChild(btn);})
+}
+
+function checkAnswer(option){
+  hasAnswered=true;
+  popupStep=4;
+  questionPopup.classList.add('hidden')
+  feedbackPopup.classList.remove('hidden')
+  if(option===currentQuestion.correctAnswer)
+    {feedbackText.textContent='Correct! '+currentQuestion.explanation
+      defenderPos++;
+     }
+  else
+    {feedbackText.textContent='wrong! '+'the right answer is '+" [ "+currentQuestion.correctAnswer+" ] because "+currentQuestion.explanation
+      hackerPos +=2;}
+    updateInfo();
+    trackCells();
+}
+
+function goToNextStage(){
+  if(hackerPos>=15)
+    {begin.textContent="Hacker breached the vault!"
+      gameOver=true;
+      return;
+    }
+  if(defenderPos>=15)
+    {begin.textContent=" You Win! You protected the vault! "
+      gameOver=true;
+      return;
+    }
+
+    currentStage++;
+    updateInfo();
+    trackCells();
+
+
+}
+
+closeBtn.addEventListener("click",function(){popupBg.classList.add('hidden');})
+resetBtn.addEventListener("click",function(){init();})
