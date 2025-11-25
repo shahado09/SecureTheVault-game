@@ -125,6 +125,20 @@ header {
   background: rgba(26, 73, 190, 0.15);
 }
 
+.hacker-cell.active {
+  background: rgba(239, 68, 68, 0.7);   
+  border-color: #ef4444;
+  color: #fff;
+}
+
+
+.defender-cell.active {
+  background: rgba(40, 34, 197, 0.7);   
+  border-color: #4022c5;
+  color: #fff;
+}
+
+
 .data-center-div {
   display: flex;
   flex-direction: column;
@@ -171,4 +185,78 @@ header {
   background: #dab008;
 }
 
+.popup-background {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+
+.hidden {
+  display: none;
+}
+
+.popup-box {
+  background: #141e4d;
+  border-radius: 16px;
+  padding: 60px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.popup-section {
+  margin-bottom: 12px;
+}
+
+.popup-section h2 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.popup-section p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ans-area {
+  border-radius: 50%;
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  background: #2351b5;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0043fd;
+}
+
+.action-popup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+
+
+@media (max-width: 768px) {
+  .game-layout {
+    flex-direction: column;
+  }
+}

@@ -282,6 +282,7 @@ nextBtn.addEventListener('click', function(){
 
     if(popupStep===5)
     {popupBg.classList.add('hidden');
+      tipPopup.style.backgroundColor 
       goToNextStage(); }
 })
 
@@ -306,10 +307,23 @@ function checkAnswer(option){
   if(option===currentQuestion.correctAnswer)
     {feedbackText.textContent='Correct! '+currentQuestion.explanation
       defenderPos++;
+      document.getElementById('popupBox').style.backgroundColor="green"
+      setTimeout(()=>{
+              document.getElementById('popupBox').style.backgroundColor="#141e4d"
+
+      },1000)
+
      }
   else
     {feedbackText.textContent='wrong! '+'the right answer is '+" [ "+currentQuestion.correctAnswer+" ] because "+currentQuestion.explanation
-      hackerPos +=2;}
+      hackerPos +=2;
+          document.getElementById('popupBox').style.backgroundColor="red"
+      setTimeout(()=>{
+              document.getElementById('popupBox').style.backgroundColor="#141e4d"
+
+      },1000)
+
+    }
     updateInfo();
     trackCells();
 }
@@ -347,11 +361,9 @@ function goToNextStage(){
 
     currentStage++;
     updateInfo();
-    trackCells();
-}
+    trackCells();}
 
 function showResultPopup (type){
-
   gameOver=true;
   tipPopup.classList.add('hidden')
   scenarioPopup.classList.add('hidden')
@@ -360,19 +372,15 @@ function showResultPopup (type){
   resultPopup.classList.remove('hidden')
   popupBg.classList.remove('hidden')
 
+  feedbackPopup.style.backgroundColor = '#141e4d'
+
   if(type==="hacker")
   {resultTitle.textContent=" Hacker Message ⚠️";
-    resultText.textContent  = "HAha you are so weak,I breached your vault and stole the company data. " ;
-    
-  }
-
+    resultText.textContent  = "HAha you are so weak,I breached your vault and stole the company data. " ;}
   else if(type==="defender")
   {resultTitle.textContent=" Security Status🔒";
     resultText.textContent  = "You successfully defended the vault. The hacker couldn't reach the data center!";
   }
-
-
 }
-
 closeBtn.addEventListener("click",function(){popupBg.classList.add('hidden');})
 resetBtn.addEventListener("click",function(){init();})
