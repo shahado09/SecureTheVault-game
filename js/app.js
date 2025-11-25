@@ -173,6 +173,9 @@ const questionText =document.querySelector('#questionText')
 const ansArea =document.querySelector('#ansArea')
 const feedbackPopup =document.querySelector('#feedbackPopup')
 const feedbackText =document.querySelector('#feedbackText')
+const resultPopup =document.querySelector('#resultPopup')
+const resultTitle =document.querySelector('#resultTitle')
+const resultText =document.querySelector('#resultText')
 const nextBtn =document.querySelector('#nextBtn')
 const closeBtn =document.querySelector('#closeBtn')
 
@@ -225,16 +228,14 @@ function trackCells() {
 function addCellEventListener(){
   defenderCells.forEach(cell =>{
     cell.addEventListener('click',function(){
-      
-      if (gameOver) {
-      begin.textContent = "Game over. Press Reset to play again.";
-      return;
-    }
+      if (gameOver)
+      {begin.textContent = "Game over. Press Reset to play again.";
+      return;}
       const stageNumber= Number(cell.dataset.defender);
       if(stageNumber!==currentStage )
         { begin.textContent = "You must complete the current stage first.";
           return;}
-    console.log("Open popup for stage:", stageNumber);
+    console.log("stage:", stageNumber);
     openTipPopUp(stageNumber)
     })
   })
@@ -278,6 +279,10 @@ nextBtn.addEventListener('click', function(){
   if(popupStep===4)
     {popupBg.classList.add('hidden');
       goToNextStage(); }
+
+    if(popupStep===5)
+    {popupBg.classList.add('hidden');
+      goToNextStage(); }
 })
 
 
@@ -311,32 +316,60 @@ function checkAnswer(option){
 
 function goToNextStage(){
 
-  if(hackerPos>=15)
-    {begin.textContent="Hacker breached the vault!"
-      gameOver=true;
-      return;
-    }
-  if(defenderPos>=15)
-    {begin.textContent=" You Win! You protected the vault! "
-      gameOver=true;
-      return;
-    }
+
+    if (defenderPos >= 15) {
+    showResultPopup ("defender")
+    gameOver = true;
+    updateInfo();
+    trackCells();
+    return;
+  }
+
+  if (hackerPos >= 15) {
+    showResultPopup ("hacker")
+    gameOver = true;
+    updateInfo();
+    trackCells();
+    return;
+  }
 
   if (currentStage >= 15) {
     if (defenderPos > hackerPos) 
-      {begin.textContent = "You Win! You protected the vault just in time!";} 
+      {showResultPopup ("defender")
+       updateInfo();
+       trackCells();
+       return;} 
     else if (hackerPos > defenderPos) 
-      {begin.textContent = "Hacker almost breached the vault. Try again!";}
-    else 
-      {begin.textContent = "It's a tie! Replay the game to break the tie.";}
-      gameOver = true;
-      trackCells();
-      return;
-  }
+      {showResultPopup ("hacker")
+       updateInfo();
+       trackCells();
+       return;}}
 
     currentStage++;
     updateInfo();
     trackCells();
+}
+
+function showResultPopup (type){
+
+  gameOver=true;
+  tipPopup.classList.add('hidden')
+  scenarioPopup.classList.add('hidden')
+  questionPopup.classList.add('hidden')
+  feedbackPopup.classList.add('hidden')
+  resultPopup.classList.remove('hidden')
+  popupBg.classList.remove('hidden')
+
+  if(type==="hacker")
+  {resultTitle.textContent=" Hacker Message ⚠️";
+    resultText.textContent  = "HAha you are so weak,I breached your vault and stole the company data. " ;
+    
+  }
+
+  else if(type==="defender")
+  {resultTitle.textContent=" Security Status🔒";
+    resultText.textContent  = "You successfully defended the vault. The hacker couldn't reach the data center!";
+  }
 
 
 }
