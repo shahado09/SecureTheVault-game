@@ -1,45 +1,174 @@
-.title{  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: system-ui, sans-serif;}
-
-.subtitle{  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: system-ui, sans-serif;}
-
-.steps-row{ display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16PX;
-  font-family: system-ui, sans-serif;}
-
-.defender-cell{
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  font-size: 24px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("/assets/bg2.png") ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  letter-spacing: 0.25em;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.steps-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.steps {
+  border: 1px solid #0e2a50;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.game-layout {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto; 
+  flex-direction: column;
+
+}
+
+
+.board {
+  background:  rgba(15, 23, 42, 0.9);
+  margin-bottom: 20px;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.hacker-label {
+  color: #ef4444;
+}
+
+.defender-label {
+  color: #1613cf;
+}
+
+.hacker-track,.defender-track {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+
+.row,.reverse-row {
+  display: flex;
+  gap: 4px;
+}
+
+.hacker-cell,.defender-cell {
+  flex: 1;
+  aspect-ratio: 1;  
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  background-color: #0d186e88;
-  border-radius: 4px;
-  border: 2px solid rgba(21, 35, 221, 0.644);
+  font-size: 12px;
+  border: 1px solid #4b5563;
 }
 
-.hacker-cell{
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  background-color: #0d186e88;
-  border-radius: 4px;
-  border: 2px solid rgba(21, 35, 221, 0.644);
+.hacker-cell {
+  background: rgba(239, 68, 68, 0.15);
 }
+
+.defender-cell {
+  background: rgba(26, 73, 190, 0.15);
+}
+
+.data-center-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px auto;
+}
+.dataCenter-img {
+  width: 100px;         
+  margin-bottom: 8px;   
+}
+
+.data-center {
+  text-align: center;
+  padding: 5px  50px; 
+  border-radius: 999px;
+  background: #1f2937;
+  border: 1px dashed #facc15;
+  color: #facc15;
+  font-size: 13px;
+  margin: 8px auto 16px;
+  max-width: 200px;
+}
+
+#begin {
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.info p span {
+  margin-left: 4px;
+  font-weight: 600;
+}
+.reset-btn {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  background: #facc15;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: #dab008;
+}
+
+
