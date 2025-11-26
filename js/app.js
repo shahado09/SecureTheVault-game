@@ -183,6 +183,13 @@ const nextBtn =document.querySelector('#nextBtn')
 const closeBtn =document.querySelector('#closeBtn')
 
 
+
+const gameSound = new Audio("../sounds/gameSound.wav")
+const dangerSound = new Audio("../sounds/dengarSound.wav")
+const correctSound = new Audio("../sounds/correct.mp3")
+const wrongSound = new Audio("../sounds/wrong.mp3")
+const startSound = new Audio("../sounds/starrtS.mp3")
+
 let currentStage=1;
 let hackerPos=0;
 let defenderPos=0;
@@ -409,9 +416,3 @@ function showResultPopup (type){
 closeBtn.addEventListener("click",function(){popupBg.classList.add('hidden');})
 resetBtn.addEventListener("click",function(){init();})
 
-
-const gameSound = new Audio("../assets/sounds/gameSound.wav")
-const dangerSound = new Audio("../assets/sounds/dengarSound.wav")
-const correctSound = new Audio("../assets/sounds/correct.mp3")
-const wrongSound = new Audio("../assets/sounds/wrong.mp3")
-const startSound = new Audio("../assets/sounds/starrtS.mp3")
