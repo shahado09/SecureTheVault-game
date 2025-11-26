@@ -184,11 +184,11 @@ const closeBtn =document.querySelector('#closeBtn')
 
 
 
-const gameSound = new Audio("../sounds/gameSound.wav")
-const dangerSound = new Audio("../sounds/dengarSound.wav")
-const correctSound = new Audio("../sounds/correct.mp3")
-const wrongSound = new Audio("../sounds/wrong.mp3")
-const startSound = new Audio("../sounds/starrtS.mp3")
+const gameSound = new Audio("/sounds/gameSound.wav")
+const dangerSound = new Audio("/sounds/dengarSound.wav")
+const correctSound = new Audio("/sounds/correct.mp3")
+const wrongSound = new Audio("/sounds/wrong.mp3")
+const startSound = new Audio("/sounds/starrtS.mp3")
 
 let currentStage=1;
 let hackerPos=0;
