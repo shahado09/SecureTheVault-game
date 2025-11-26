@@ -410,8 +410,8 @@ closeBtn.addEventListener("click",function(){popupBg.classList.add('hidden');})
 resetBtn.addEventListener("click",function(){init();})
 
 
-const gameSound = new Audio("../media/gameSound.wav")
-const dangerSound = new Audio("../media/dengarSound.wav")
-const correctSound = new Audio("../media/correct.mp3")
-const wrongSound = new Audio("../media/wrong.mp3")
-const startSound = new Audio("../media/starrtS.mp3")
+const gameSound = new Audio("../assets/sounds/gameSound.wav")
+const dangerSound = new Audio("../assets/sounds/dengarSound.wav")
+const correctSound = new Audio("../assets/sounds/correct.mp3")
+const wrongSound = new Audio("../assets/sounds/wrong.mp3")
+const startSound = new Audio("../assets/sounds/starrtS.mp3")
