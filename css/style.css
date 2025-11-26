@@ -8,7 +8,7 @@
 
 
 .home-screen {
-  background-image: url("/assets/home-bg.avif") ;
+  background-image: url("/images/home-bg.avif") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -191,7 +191,7 @@
 
 .game-screen {
   font-family: Arial, sans-serif;
-  background-image: url("/assets/bg2.png") ;
+  background-image: url("/images/bg2.png") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
