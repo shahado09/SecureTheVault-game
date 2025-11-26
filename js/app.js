@@ -155,6 +155,9 @@ const questions = [
 console.log(questions)
 
 // 2) cached element + Variables 
+const homeScreen =document.querySelector('#homeScreen')
+const gameScreen =document.querySelector('#gameScreen')
+const startBtn =document.querySelector('#startBtn')
 const hackerCells =document.querySelectorAll('.hacker-cell')
 const defenderCells =document.querySelectorAll('.defender-cell')
 const begin =document.querySelector('#begin')
@@ -189,6 +192,18 @@ let hasAnswered=false;
 let gameOver=false;
 
 // 3) Functions
+
+
+gameScreen.classList.add('hidden')
+startBtn.addEventListener('click',function(){
+  homeScreen.classList.add('hidden')
+  gameScreen.classList.remove('hidden')
+  startSound.play();
+  startSound.loop = true;
+  init();
+})
+
+
 init();
 addCellEventListener();
 
@@ -204,7 +219,9 @@ function init(){
   begin.textContent="Click Stage 1 to begin."
   popupBg.classList.add('hidden')
   updateInfo();
-  trackCells();}
+  trackCells();
+}
+
 
 function updateInfo(){
   hackerPosEl.textContent=hackerPos;
@@ -243,6 +260,7 @@ function addCellEventListener(){
 
 
 function openTipPopUp(stageNumber){
+    gameSound.play();
   currentQuestion=questions[stageNumber-1]
   popupStep=1;
   hasAnswered=false;
@@ -306,6 +324,7 @@ function checkAnswer(option){
   feedbackPopup.classList.remove('hidden')
   if(option===currentQuestion.correctAnswer)
     {feedbackText.textContent='Correct! '+currentQuestion.explanation
+      correctSound.play();
       defenderPos++;
       document.getElementById('popupBox').style.backgroundColor="green"
       setTimeout(()=>{
@@ -316,6 +335,7 @@ function checkAnswer(option){
      }
   else
     {feedbackText.textContent='wrong! '+'the right answer is '+" [ "+currentQuestion.correctAnswer+" ] because "+currentQuestion.explanation
+      wrongSound.play();
       hackerPos +=2;
           document.getElementById('popupBox').style.backgroundColor="red"
       setTimeout(()=>{
@@ -375,12 +395,23 @@ function showResultPopup (type){
   feedbackPopup.style.backgroundColor = '#141e4d'
 
   if(type==="hacker")
-  {resultTitle.textContent=" Hacker Message ⚠️";
-    resultText.textContent  = "HAha you are so weak,I breached your vault and stole the company data. " ;}
+  {document.getElementById('popupBox').style.backgroundColor="red"
+    resultTitle.textContent=" Hacker Message ⚠️";
+    resultText.textContent  = "HAha you are so weak,I breached your vault and stole the company data. " ;
+    dangerSound.play()}
   else if(type==="defender")
-  {resultTitle.textContent=" Security Status🔒";
+  {document.getElementById('popupBox').style.backgroundColor="green"
+    resultTitle.textContent=" Security Status🔒";
     resultText.textContent  = "You successfully defended the vault. The hacker couldn't reach the data center!";
+    correctSound();
   }
 }
 closeBtn.addEventListener("click",function(){popupBg.classList.add('hidden');})
 resetBtn.addEventListener("click",function(){init();})
+
+
+const gameSound = new Audio("../assets/sounds/gameSound.wav")
+const dangerSound = new Audio("../assets/sounds/dengerSound.wav")
+const correctSound = new Audio("../assets/sounds/correct.mp3")
+const wrongSound = new Audio("../assets/sounds/wrong.mp3")
+const startSound = new Audio("../assets/sounds/starrtS.mp3")
