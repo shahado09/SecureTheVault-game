@@ -1,5 +1,4 @@
-![img](./images/Screenshot.png)
-![img](./images/Screenshot2.png)
+
 
 # Secure The Vault 🔐
 
