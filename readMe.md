@@ -1,4 +1,6 @@
-![img](./images/Screenshot.pngg)
+![img](./images/Screenshot.png)
+![img](./images/Screenshot2.png)
+
 # Secure The Vault 🔐
 
 A fun, beginner-friendly security awareness game where you play as the defender protecting a digital vault from cyber threats.  
@@ -10,6 +12,7 @@ Through simple scenarios and multiple-choice questions, players learn how to tak
 
 
 ![Game Screenshot](./images/Screenshot.png)
+![Game Screenshot](./images/Screenshot2.png)
 
 ---
 
